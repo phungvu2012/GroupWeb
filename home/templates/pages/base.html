@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href=" {% static 'css/bootstrap.min.css' %} " type='text/css' />
+    <link rel="stylesheet" href=" {% static 'style.css' %} " type='text/css' />
+    <title>{% block title %}  {% endblock  %}</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'logo.png' %}"/>
+    <script src="https://kit.fontawesome.com/bb7791bf4b.js" crossorigin="anonymous"></script>
+    <style>
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="main-nav">
+            <nav class="navbar nav__tap__top">
+                <ul class="navbar-nav">
+                    <li id="myprofile" class="nav-item" >
+                        <a class="nav-link active" href="#">
+                            <i class="fas fa-home" title="Trang chủ"></i>
+                        </a>
+                    </li>
+                    <li id="home" class="nav-item" >
+                        <a class="nav-link" href="#"> 
+                            <i class="fas fa-user" title="Trang cá nhân"></i>
+                        </a>
+                    </li>
+                    <li id="group" class="nav-item" >
+                        <a class="nav-link" href="#"> 
+                            <i class="fas fa-users" title="Nhóm"></i>
+                        </a>
+                    </li>
+                    <li id="" class="nav-item" >
+                        <a class="nav-link" href="#"> 
+                            <i class="fas fa-user-cog" title="Cài đặt người dùng"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <nav class="nav__tap__bottom">
+                {% if user.username %}
+                <div class="profile" onclick="menuToggle();">
+                    <img src="{% static 'd9506eb47e4c20ab5d0bb5c9d71070d0.jpg' %}"  alt="">
+                </div>
+                <div class="menu">
+                    <!-- <h3>Some one <br> <span> Website Design </span></h3> -->
+                    <ul style="margin: 0;">
+                        <li> <img src="{% static 'log-out.png' %}"> <a href=" {% url 'logout' %}"> Logout </a></li>
+                    </ul>
+                </div>
+                <div class="user-status-icon"> 
+                    <div class="icon-status"></div>
+                </div>
+                {% endif %}
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col-lg-3" style="position: fixed; padding: 0;">
+                <div class="aside-nav" >
+                    <div class="section">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9" style="position: absolute; right: 0; background-color: azure; height: 100vh;">
+                
+            </div>
+        </div>
+    </div>
+    <script>
+		function menuToggle() {
+			const toggleMenu = document.querySelector('.menu');
+			toggleMenu.classList.toggle('active')
+		}
+	</script>
+</body>
+</html>

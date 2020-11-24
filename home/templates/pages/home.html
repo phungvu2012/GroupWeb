@@ -1,0 +1,15 @@
+{% extends "pages/base.html" %}
+{% block title %} Home {% endblock  %}
+{% block sub-nav %}
+    {% for group in Groups %}
+        <div class="group"> 
+            <div class="group-img"> 
+                <img src="{{group.image.url}}" alt="{{group.description}}"/>
+            </div>
+            <div class="group-name"> <strong> {{group.name}} </strong></div>
+        </div>
+    {% endfor %}
+{% endblock  %}
+{% block content %}
+
+{% endblock  %}
