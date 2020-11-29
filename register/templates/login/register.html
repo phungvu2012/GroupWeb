@@ -34,6 +34,18 @@
 			font-size: 1.1rem;
 			text-align: center;
 		}
+
+		.resetError {
+			position: absolute;
+			bottom: 100px;
+			right: -20px;
+		}
+
+		.resetError ul{
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
 	</style>
 </head>
 <body>
@@ -73,13 +85,12 @@
                 </form>
                 
 				<form method="POST" class="sign-up-form">
-				<p style="color: red; z-index: 200;">
+				<div class="resetError" style="color: red; z-index: 200;">
 						{% csrf_token %}
 						{% for key, value in form.errors.items %}
 							{{value}}
 						{% endfor %}
-						hello
-					</p>
+					</div>
 					<h2 class="title"> Sign up</h2>
 					<div class="input-field">
 						<i class="fas fa-user"></i>

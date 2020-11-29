@@ -20,7 +20,7 @@ class Group(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=45)
     description = models.TextField(null=True)
-    image = models.ImageField(null=True)
+    image = models.ImageField(blank=True, null=True)
     def __str__(self):
         titleGroup = "{} : " + self.name
         return titleGroup.format(self.id)
@@ -44,7 +44,7 @@ class Account(models.Model):
 
 class AccountApplyGroup(models.Model):
     objects = models.Manager()
-    userName = models.ForeignKey(Account, on_delete=models.CASCADE)
+    userName = models.ForeignKey(User, on_delete=models.CASCADE)
     groupId = models.ForeignKey(Group, on_delete=models.CASCADE)
     timeApply = models.DateField(auto_now_add=True)
 
@@ -82,5 +82,5 @@ class accountReportComment(models.Model):
 class GroupHasAccount(models.Model):
     objects = models.Manager()
     groupId = models.ForeignKey(Group, on_delete=models.CASCADE)
-    userName = models.ForeignKey(Account, on_delete=models.CASCADE)
+    userName = models.ForeignKey(User, on_delete=models.CASCADE)
     isAdmin = models.BooleanField(default=False);

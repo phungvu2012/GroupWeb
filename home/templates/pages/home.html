@@ -1,6 +1,12 @@
 {% extends "pages/base.html" %}
 {% block title %} Home {% endblock  %}
-{% block sub-nav %}
+
+{% block imageProfile %}
+    <img src="{{avatar}}"  alt="">
+    {% comment %} <p> {{avatar}} </p> {% endcomment %}
+{% endblock  %}
+
+{% comment %} {% block sub-nav %}
     {% for group in Groups %}
         <div class="group"> 
             <div class="group-img"> 
@@ -12,4 +18,4 @@
 {% endblock  %}
 {% block content %}
 
-{% endblock  %}
+{% endblock  %} {% endcomment %}

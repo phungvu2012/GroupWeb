@@ -2,10 +2,10 @@ from django import forms
 import re
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
-from django.contrib.auth.forms import UserCreationForm
 from home.models import Account
-from django.forms import ModelForm
-from django.contrib.auth import views as auth_views
+# from django.contrib.auth.forms import UserCreationForm
+# from django.forms import ModelForm
+# from django.contrib.auth import views as auth_views
 
 class DateInput(forms.DateInput):
     input_type = 'date'
@@ -45,9 +45,8 @@ class UserForm(forms.ModelForm):
     def save(self):
         avatarUserDefault = 'female.png'
         coverPhotoDefault = 'gray_background.jpg'
-        if self.cleaned_data['gender']:
+        if self.cleaned_data['gender'] == True:
             avatarUserDefault = '/male.jpg'
-        
         newUser = User.objects.create_user(username=self.cleaned_data['username'], email=self.cleaned_data['email'], password=self.cleaned_data['password1'], first_name=self.cleaned_data['first_name'], last_name=self.cleaned_data['last_name'])
         Account.objects.create(user = newUser, gender=self.cleaned_data['gender'], dateOfBirth=self.cleaned_data['dateOfBirth'], avatar=avatarUserDefault, coverPhoto=coverPhotoDefault)
 

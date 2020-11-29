@@ -9,10 +9,14 @@
     <title>{% block title %}  {% endblock  %}</title>
     <link rel="shortcut icon" type="image/png" href="{% static 'logo.png' %}"/>
     <script src="https://kit.fontawesome.com/bb7791bf4b.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <style>
-
-
-
+        {% block style %}
+    
+    {% endblock  %}
     </style>
 </head>
 <body>
@@ -31,12 +35,12 @@
                         </a>
                     </li>
                     <li id="group" class="nav-item" >
-                        <a class="nav-link" href="#"> 
+                        <a class="nav-link" href="{% url 'groupapp' %}"> 
                             <i class="fas fa-users" title="Nhóm"></i>
                         </a>
                     </li>
-                    <li id="" class="nav-item" >
-                        <a class="nav-link" href="#"> 
+                    <li id="editProfile" class="nav-item" >
+                        <a class="nav-link" href="{% url 'edit' %}"> 
                             <i class="fas fa-user-cog" title="Cài đặt người dùng"></i>
                         </a>
                     </li>
@@ -45,7 +49,9 @@
             <nav class="nav__tap__bottom">
                 {% if user.username %}
                 <div class="profile" onclick="menuToggle();">
-                    <img src="{% static 'd9506eb47e4c20ab5d0bb5c9d71070d0.jpg' %}"  alt="">
+                    {% block imageProfile %}
+                        
+                    {% endblock  %}
                 </div>
                 <div class="menu">
                     <!-- <h3>Some one <br> <span> Website Design </span></h3> -->
@@ -68,7 +74,9 @@
                 </div>
             </div>
             <div class="col-lg-9" style="position: absolute; right: 0; background-color: azure; height: 100vh;">
+                {% block content %}
                 
+                {% endblock  %}
             </div>
         </div>
     </div>

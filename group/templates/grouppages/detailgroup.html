@@ -1,0 +1,11 @@
+{% extends "pages/base.html" %}
+{% block content %}
+    <h3> {{ group.name }} </h3>
+    <h6> {{ group.date }} </h6>
+    {% for post in Posts %}
+        <div> 
+            <p> {{post.content|safe|linebreaks}}</p>
+            <img src="/media/{{post.image}}" alt="" style="width: 100%"/>
+        </div>
+    {% endfor %}
+{% endblock  %}
